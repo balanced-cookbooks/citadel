@@ -41,7 +41,7 @@ class Citadel
 
   def [](key)
     Chef::Log.debug("citadel: Retrieving #{@bucket}/#{key}")
-    Citadel::S3.get(@bucket, key, @access_key_id, @secret_access_key, @token).to_s
+    Citadel::S3.get(@bucket, key, @access_key_id, @secret_access_key, @token).to_s.gsub!(/\n/, '')
   end
 
   # Helper module for the DSL extension
